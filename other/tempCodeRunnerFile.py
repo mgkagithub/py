@@ -1,0 +1,2 @@
+
+            if num in frequency:

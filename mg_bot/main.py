@@ -29,7 +29,7 @@ client = commands.Bot()
 @client.slash_command(name="r",description = "gib input" ,  guild_ids=[1018830164102230088]) #Add the guild ids in which the slash command will appear. If it should be in all, remove the argument, but note that it will take some time (up to an hour) to register the command if it's for all guilds.
 async def first_slash(ctx,cloud_input):
     talks(cloud_input)
-    await ctx.send(cloud_input)
+    await ctx.respond(cloud_input)
 
 # Run the bot
 client.run(token)
