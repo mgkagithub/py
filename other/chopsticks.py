@@ -1,14 +1,15 @@
 import random as r 
 import os
 human_left , human_right , comp_left , comp_right = 1,1,1,1
+os.system('cls')
 while True:
-    print(f"\n\n\tL\tR\n\nC - {comp_left} , {comp_right}\n\nH - {human_left} , {human_right}\n\n")
+    print(f"\n\n    L   R\n\nC - {comp_left} , {comp_right}\n\nH - {human_left} , {human_right}\n\n")
     for i in ['h','c']:
         if i == 'h':
-            choice = input("Would u like to \ns - switch values\nd - divide values\nt - tap the computer\nq - quit?")
+            choice = input("Would u like to:\n\ns - switch values\nd - divide values\nt - tap the computer\nq - quit?")
             if choice == 's':
                 human_left,human_right = human_right,human_left
-                print(f"\n\n\tL\tR\n\nC - {comp_left} , {comp_right}\n\nH - {human_left} , {human_right}\n\n")
+                print(f"\n\n    L   R\n\nC - {comp_left} , {comp_right}\n\nH - {human_left} , {human_right}\n\n")
                 
             elif choice == 'd':
                 hand = input("which hand would u like to add the value to?\nEnter L for left and R for right:\n")
@@ -25,13 +26,14 @@ while True:
                 else:
                     if hand == human_left:
                         human_left,human_right = human_left+value,human_right-value
-                        print(f"\n\n\tL\tR\n\nC - {comp_left} , {comp_right}\n\nH - {human_left} , {human_right}\n\n")
+                        print(f"\n\n    L   R\n\nC - {comp_left} , {comp_right}\n\nH - {human_left} , {human_right}\n\n")
                         
                     else:
                         human_left,human_right = human_left-value,human_right+value
-                        print(f"\n\n\tL\tR\n\nC - {comp_left} , {comp_right}\n\nH - {human_left} , {human_right}\n\n")
+                        print(f"\n\n    L   R\n\nC - {comp_left} , {comp_right}\n\nH - {human_left} , {human_right}\n\n")
                         
             elif choice == 'q':
+                os.system('cls')
                 print("Game has been quit.")
                 exit()
             elif choice == 't':        
@@ -41,20 +43,20 @@ while True:
                 if comp_hand == 'L': 
                     if human_hand == 'L':
                         comp_left = (comp_left+human_left)%5
-                        print(f"\n\n\tL\tR\n\nC - {comp_left} , {comp_right}\n\nH - {human_left} , {human_right}\n\n")
+                        print(f"\n\n    L   R\n\nC - {comp_left} , {comp_right}\n\nH - {human_left} , {human_right}\n\n")
                         
                     else:
                         comp_left = (comp_left+human_right)%5
-                        print(f"\n\n\tL\tR\n\nC - {comp_left} , {comp_right}\n\nH - {human_left} , {human_right}\n\n")
+                        print(f"\n\n    L   R\n\nC - {comp_left} , {comp_right}\n\nH - {human_left} , {human_right}\n\n")
                         
                 elif comp_hand == 'R':
                     if human_hand == 'L':
                         comp_right = (comp_right+human_left)%5
-                        print(f"\n\n\tL\tR\n\nC - {comp_left} , {comp_right}\n\nH - {human_left} , {human_right}\n\n")
+                        print(f"\n\n    L   R\n\nC - {comp_left} , {comp_right}\n\nH - {human_left} , {human_right}\n\n")
                         
                     else:
                         comp_right = (comp_right+human_right)%5
-                        print(f"\n\n\tL\tR\n\nC - {comp_left} , {comp_right}\n\nH - {human_left} , {human_right}\n\n")
+                        print(f"\n\n    L   R\n\nC - {comp_left} , {comp_right}\n\nH - {human_left} , {human_right}\n\n")
                         
         elif i == 'c':
             choice = r.choice(['t','t','d','d','s'])
@@ -64,16 +66,16 @@ while True:
                 if c_hand == 'L' and comp_right>0:
                     rannum = r.randint(1, comp_right)
                     comp_left,comp_right = comp_left+rannum , comp_right - rannum
-                    print(f"\n\n\tL\tR\n\nC - {comp_left} , {comp_right}\n\nH - {human_left} , {human_right}\n\n")
+                    print(f"\n\n    L   R\n\nC - {comp_left} , {comp_right}\n\nH - {human_left} , {human_right}\n\n")
                 elif c_hand == 'R' and comp_left>0:
                         rannum = r.randint(1, comp_left)
                         comp_left,comp_right = comp_left-rannum , comp_right + rannum
-                        print(f"\n\n\tL\tR\n\nC - {comp_left} , {comp_right}\n\nH - {human_left} , {human_right}\n\n")
+                        print(f"\n\n    L   R\n\nC - {comp_left} , {comp_right}\n\nH - {human_left} , {human_right}\n\n")
                         
             elif choice == 's':
                     print("computer has decided to switch")
                     human_left,human_right = human_right,human_left
-                    print(f"\n\n\tL\tR\n\nC - {comp_left} , {comp_right}\n\nH - {human_left} , {human_right}\n\n")
+                    print(f"\n\n    L   R\n\nC - {comp_left} , {comp_right}\n\nH - {human_left} , {human_right}\n\n")
                     
             elif choice == 't':
                 print("the computer has decided to tap you")
@@ -82,20 +84,20 @@ while True:
                 if c_hand == 'L': 
                     if human_hand == 'L':
                         human_left = (human_left+comp_left)%5
-                        print(f"\n\n\tL\tR\n\nC - {comp_left} , {comp_right}\n\nH - {human_left} , {human_right}\n\n")
+                        print(f"\n\n    L   R\n\nC - {comp_left} , {comp_right}\n\nH - {human_left} , {human_right}\n\n")
                         
                     else:
                         human_left = (human_left+comp_right)%5
-                        print(f"\n\n\tL\tR\n\nC - {comp_left} , {comp_right}\n\nH - {human_left} , {human_right}\n\n")
+                        print(f"\n\n    L   R\n\nC - {comp_left} , {comp_right}\n\nH - {human_left} , {human_right}\n\n")
                         
                 elif c_hand == 'R':
                     if human_hand == 'L':
                         human_right = (human_right+comp_left)%5
-                        print(f"\n\n\tL\tR\n\nC - {comp_left} , {comp_right}\n\nH - {human_left} , {human_right}\n\n")
+                        print(f"\n\n    L   R\n\nC - {comp_left} , {comp_right}\n\nH - {human_left} , {human_right}\n\n")
                         
                     else:
                         human_right = (human_right+comp_right)%5
-                        print(f"\n\n\tL\tR\n\nC - {comp_left} , {comp_right}\n\nH - {human_left} , {human_right}\n\n")
+                        print(f"\n\n    L   R\n\nC - {comp_left} , {comp_right}\n\nH - {human_left} , {human_right}\n\n")
 
                 
 
