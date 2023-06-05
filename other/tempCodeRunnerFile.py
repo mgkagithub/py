@@ -1,2 +1,1 @@
-
-            if num in frequency:
+print(f"C - {comp_values}\nH - {human_values}")

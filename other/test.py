@@ -22,7 +22,7 @@ for i in pcards:
     a = i.split('-')
     for j in dict.keys():
         if a[i]==dict.keys(j):
-            dict[j[]]
+            dict[j[i]]
 print(dict)
     
     
