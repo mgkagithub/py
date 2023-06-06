@@ -14,7 +14,7 @@ client = discord.Bot(command_prefix='f.',intents=discord.Intents.all())
 
 # tag handler
 
-filename ="C:\\Users\\omega\\OneDrive\\Desktop\\py\\py\\discord_bots\\fueled_bot\\cmds.csv"
+filename ="C:\\Users\\omega\\OneDrive\\Desktop\\py\\py\\discord_bots\\fueled_bot\\cmds.txt"
 cmd_dict = {}
 with open(filename, 'r') as data:
   for line in data.readlines():
@@ -42,7 +42,7 @@ async def tag(ctx,tag_name):
 @client.command()
 async def all_tags(ctx):
     a = cmd_dict.keys()
-    
+    print(a)
     await ctx.respond(a)
 
 @client.command()
