@@ -24,23 +24,23 @@ while True:
                 human_left,human_right = human_right,human_left
                 print(f"\n\n    L   R\n\nC - {comp_left} , {comp_right}\n\nH - {human_left} , {human_right}\n\n")
             elif choice == 'd':
-                hand = input("which hand would u like to add the value to?\nEnter L for left and R for right:\n")
+                hand = input("which hand would u like to remove the value from?\nEnter L for left and R for right:\n")
                 hand = hand.upper()
                 if hand == 'L':
                     hand = human_left
-                else:
+                elif hand == 'R':
                     hand = human_right
-                value = int(input("Enter the value to be added:\n"))
+                value = int(input("Enter the value to be removed:\n"))
                 if value%5 == 0:
                     print("Invalid value")
                 elif (hand - value) < 0:
                     print("Invalid value")
                 else:
                     if hand == human_left:
-                        human_left,human_right = human_left+value,human_right-value
+                        human_left,human_right = human_left-value,human_right+value
                         print(f"\n\n    L   R\n\nC - {comp_left} , {comp_right}\n\nH - {human_left} , {human_right}\n\n")
                     else:
-                        human_left,human_right = human_left-value,human_right+value
+                        human_left,human_right = human_left+value,human_right-value
                         print(f"\n\n    L   R\n\nC - {comp_left} , {comp_right}\n\nH - {human_left} , {human_right}\n\n")
             elif choice == 'q':
                 os.system('cls')
@@ -103,7 +103,7 @@ while True:
                         else:
                             human_left = (human_left+comp_right)%5
                             print(f"\n\n    L   R\n\nC - {comp_left} , {comp_right}\n\nH - {human_left} , {human_right}\n\n")
-
+# sort out computer tapping , cant use zero point hands and hit zero point hands - dont do random for one hand situations
                 
 
 
