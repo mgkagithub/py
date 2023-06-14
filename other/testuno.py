@@ -2,7 +2,7 @@ import random
 import os
 import time
 os.system("cls")
-#os.system("cls")
+#os.system("cls")``
 
 time.sleep(1)
 def print_cards(pcards , ccards):

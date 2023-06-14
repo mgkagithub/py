@@ -1,1 +1,2 @@
-print(f"C - {comp_values}\nH - {human_values}")
+
+funct1()

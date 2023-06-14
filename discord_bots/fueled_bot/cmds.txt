@@ -1,9 +1,10 @@
-mg-'Server Almighty'
-pooj-'cutiee'
-raj-'raj'
-treasury-'1500'
-total-'The FuelEd Treasury has $1500'
-spent-'0'
-left-'1500'
-latest_winners-'name1, name2, name3'
-ash-'nigga'
+mg-Server Almight
+pooj-cutiee
+raj-raj
+treasury-1500
+total-The FuelEd Treasury has $1500
+spent-0
+left-'1500
+latest_winners-name1, name2, name3
+ash-nigga
+mgg-admin

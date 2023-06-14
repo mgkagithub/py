@@ -26,6 +26,7 @@ with open(filename, 'r') as data:
     cmd_dict[num] = val
 
 # When the bot is ready, add a listener for the slash command event
+# cmds to add - add tag , edit tag , check lb , delete tag , currency system
 
 @client.event
 async def on_ready():

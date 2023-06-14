@@ -1,13 +1,19 @@
 import random as r
 import os
+import statistics
 os.system('cls')
 ccards = []
 ccards_power = []
 ccards_legendary = []
-pcards = []
+ccards_skip_reverse = []
+pcards = [] 
 legendary_cards = ['+4- ','W- ']
 power_cards = ['R-Y', 'S-Y','R-R','S-R','R-G','S-G','R-B','S-B','+4- ','W- ', '+2-Y', '+2-B','+2-G','+2-R']
 
+skip_reverse = ['R-R','R-R','S-R','S-R',
+                'R-G','R-G','S-G','S-G',
+                'R-B','R-B','S-B','S-B',
+                'R-Y','R-Y','S-Y','S-Y']
 cards = [
 
         '0-R','1-R','2-R','3-R','4-R','5-R','6-R','7-R','8-R','9-R',
@@ -44,7 +50,7 @@ for i in shuffled_cards:
         shuffled_cards.append(shuffled_cards[0])
         top_card = shuffled_cards[1]
         continue
-for i in range(0,10):
+for i in range(0,20):
     ccards.append(shuffled_cards[i])
 power_ccards = []
 outcome_power_cards = []
@@ -80,15 +86,27 @@ def power_cards_diff():
                     true_legen()
             return ccards , ccards_power , ccards_legendary
         check1()
-        def check3():
-            if len_ccards == len(ccards) + len(ccards_power) + len(ccards_legendary):
-                return False
+    true_legen()
+    def skip_reverse_only():
+        for i in ccards_power:
+            if i in skip_reverse:
+                ccards_skip_reverse.append(i)
+                ccards_power.remove(i)
+        def check1():
+            for i in ccards_power:
+                if i in skip_reverse:
+                    skip_reverse_only()
+            return ccards , ccards_power , ccards_legendary , ccards_skip_reverse
+        check1()
+        def check4():
+            if len_ccards == len(ccards) + len(ccards_power) + len(ccards_legendary) + len(ccards_skip_reverse):
+                return True
             else:
-                return True  
-        print(f"final set - {ccards} , {ccards_power}\nlen(ccards) - {len(ccards)}\nlen(power cards) - {len(ccards_power)}\nlen(legen cards) - {len(ccards_legendary)}\nlength error = {check3()}")
-    true_legen() 
-    print(ccards,ccards_power,ccards_legendary) 
-    return ccards , ccards_power , ccards_legendary
+                return False
+        print(f"final set - \nlen(ccards) - {len(ccards)}\nlen(power cards) - {len(ccards_power)}\nlen(legen cards) - {len(ccards_legendary)}\nlen(S and R) - {len(ccards_skip_reverse)}\nlength error = {check4()}")
+    skip_reverse_only()
+    print(ccards , ccards_power,ccards_skip_reverse,ccards_legendary)
+    return ccards , ccards_power , ccards_legendary , ccards_skip_reverse
 
 def find_mode(lst):
     frequency_num = {}
@@ -137,175 +155,6 @@ def find_anti_mode(lst):
     mode_num = [num for num, freq in frequency_num.items() if freq == min_frequency_num]
     mode_col = [col for col, freq in frequency_col.items() if freq == min_frequency_col]
     return mode_num , mode_col
-
-def verify_h():
-    global top_card,pcards,shuffled_cards
-
-    a = card_name.split('-')
-    b = top_card.split('-')
-
-    if card_name not in power_cards:
-        if a[0]==b[0] or a[1]==b[1]:
-            top_card = card_name
-
-            if last_played == 'c':
-                ccards.remove(card_name)
-                card_deck.append(card_name)
-                return ccards,card_deck
-
-            else:
-                pcards.remove(card_name)
-                card_deck.append(card_name)
-                return pcards,card_deck
-        else:                                                                                                                                              
-
-            print("Your first-card/card doesnt match the top card , try again")
-
-    else:
-        if last_played == 'c':    #c == computer , p == player
-
-            if card_name == '+4- ':
-
-                for i in range(4):
-
-                    pcards.append(shuffled_cards[i])
-                    top_card = card_name
-                ccards.remove(card_name)
-                card_deck.append(card_name)
-                color = random.choice(['R','G','B','Y'])
-                # try using mode 
-                top_card = f"' '-{color}"
-                return top_card,card_deck,ccards
-
-            elif a[0]=='+2' and a[1]==b[1] or a[0]=='+2' and a[0]==b[0]:
-
-                for i in range(2):
-                    pcards.append(shuffled_cards[i])
-                    top_card = card_name 
-                card_deck.append(card_name)
-                return top_card,card_deck
-
-            elif a[0] == 'R' and a[1]==b[1] or a[0] == 'R' and b[0] == 'R':
-
-                player_loop.reverse()
-                ccards.remove(card_name)   
-                top_card = card_name
-                card_deck.append(card_name)
-                return top_card,card_deck
-
-            elif a[0] == 'S' and a[1]==b[1] or a[0] == 'S' and b[0] == 'S':
-
-                player_loop.reverse()
-                ccards.remove(card_name)
-                top_card = card_name
-                card_deck.append(card_name)
-                print(card_name)
-                return top_card,card_deck
-
-            elif a[0] == 'W' or a[0] == ' ':
-
-                top_card = card_name
-                color = random.choice(['R','G','B','Y'])
-                top_card = f"' '-{color}"
-                card_deck.append(card_name)
-                return top_card ,card_deck
-
-        else:
-
-            if card_name == '+4' and card_name[0]==top_card[0] or a[0] == " ":
-                color = input("Enter color - R , G , B or Y:\n")
-                color = input("Enter a color:\n")
-                color = color.upper()   
-
-                for i in range(4):
-                    ccards.append(shuffled_cards[i])
-                    shuffled_cards.remove(shuffled_cards[i])
-                pcards.remove(card_name)
-                card_deck.append(card_name)
-                top_card = f"' '-{color}"
-                return top_card,card_deck
-
-            elif a[0]=='+2' or a[1]==b[1]:
-
-                pcards.remove(card_name)
-                for i in range(2):
-                    ccards.append(shuffled_cards[i])
-                    top_card = card_name
-                card_deck.append(card_name)
-                return top_card,card_deck
-
-            elif a[0] == 'R' and a[1]==b[1] or a[0] == 'R' and b[0] == 'R':
-
-                player_loop.reverse()
-                pcards.remove(card_name)
-                top_card = card_name
-                card_deck.append(card_name)
-                return top_card,card_deck
-
-            elif a[0] == 'S' and a[1]==b[1] or a[0] == 'S' and b[0] == 'S':
-
-                player_loop.reverse()
-                pcards.remove(card_name)
-                top_card = card_name
-                card_deck.append(card_name)
-                return top_card,card_deck
-
-            elif a[0] == 'W' or a[0] == ' ':
-
-                color = input("Enter a color:\n")
-                color = color.upper()
-                top_card = f"' '-{color}"
-                pcards.remove(card_name)
-                card_deck.append(card_name)
-                return top_card ,card_deck
-
-
-def human():
-    global pcards , top_card
-    outcome = []
-    top_card_config = top_card.split('-')
-    ppcards = []
-    if len(pcards)>=5:
-        for i in range(len(pcards)):
-            if ccards[i].split('-')[0] == top_card_config[0] or ccards[i].split('-')[1] == top_card_config[1]:
-                ppcards.append(ccards[i])
-    #    for i in range(len(ccards)):
-    #        if ccards[i].split('-')[0] == top_card_config[0] or ccards[i].split('-')[1] == top_card_config[1]:
-    #            ppcards.append(ccards[i]) 
-
-        def find_mode(lst):
-            frequency = {}
-            for num in lst:
-                num = num.split('-')
-                num = num[0]
-                if num in frequency:
-                    frequency[num] += 1
-                else:
-                    frequency[num] = 1
-            
-            max_frequency = max(frequency.values())
-            mode = [num for num, freq in frequency.items() if freq == max_frequency]
-            
-            return mode
-
-        mode = find_mode(pcards)
-        anti_mode = find_anti_mode(pcards)
-        for i in range(len(ccards)):
-            if ccards[i].split('-')[0] == mode[0]:
-                outcome.append(ccards[i])
-        for i in range(len(outcome)):
-            if len(outcome) <= 0:
-                deck(ccards)
-                return ccards
-            else:
-                if outcome[i].split('-')[1] == top_card_config[1]:
-                    outcome[i],outcome[0] = outcome[0],outcome[i]
-        print(f"outcome is {outcome}")
-        for i in outcome:
-            print(i)
-    else:
-        power_comp()
-
 def play_best_stack():
     global ccards , ccards_power
     outcome = []
@@ -383,7 +232,8 @@ value2 , color2 = find_anti_mode(ccards)
 print("value 1 , color1 = ",value1,color1)
 print("value 2 , color2 = ",value2,color2)
 
-def deck_1():
+def deck_1(ccards,deck,top_card):
+
     pass
 def deck_m():
     pass
@@ -402,11 +252,23 @@ def l_p():
 def o_s_r():
     pass
 def req_info():
+    all_cards = shuffled_cards
+    comp_cards = ccards
+    top_card = top_card
+    power_cards = power_cards
+    legendary_cards = legendary_cards
+    mode_ccards = find_mode(comp_cards)
+    anti_mode_ccards = find_anti_mode(comp_cards)
+
     pass
 def comp():
     moves = [deck_1(),deck_m(),legendary_c(),s_r_c(),s_r_m(),s_r_p(),n_l_p(),l_p(),o_s_r()]
+    print(max_move := max(moves))
+    def move(max_move):
+        dict1
+
     print(moves)
-comp()
+power_cards_diff()
 
 
 
