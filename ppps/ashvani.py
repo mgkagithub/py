@@ -1,5 +1,5 @@
 from itertools import permutations
-s1,s2,l,sam=1,int(input()),[1 for _ in range(int(input("Enter N: ")))],0
+s1,s2,l,sam=1,int(input("First step is always 1.\nEnter 2nd step: ")),[1 for _ in range(int(input("Enter total stairs: ")))],0
 num=len(l)
 while 1:
     z=set(permutations(l,len(l)))
