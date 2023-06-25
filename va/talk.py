@@ -1,6 +1,6 @@
 import pyttsx3
-input=''
-def talks(input):
+talk = input("Enter text:\n")
+def talks(talk):
     # Initialize the text-to-speech engine.
     engine = pyttsx3.init()
 
@@ -8,7 +8,8 @@ def talks(input):
     engine.setProperty('voice', 'english-us')
 
     # Say some text.
-    engine.say("Hello, world!")
+    engine.say(talk)
 
     # Play the speech.
     engine.runAndWait()
+talks(talk)
