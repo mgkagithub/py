@@ -4,7 +4,7 @@ from operator import add
 lst = []
 length = int(input("Enter range of list:\n"))
 for i in range(length):
-    lst.append(int(input("Enter num:\n")))
+    lst.append(int(input("Enter list num:\n")))
 key = int(input("Enter num: "))
 match_sum = []
 for i in range(1,len(lst)):
@@ -16,7 +16,7 @@ for i in range(1,len(lst)):
             match_sum.sort()
 for i in range(len(match_sum)):
     print(f"{i+1}> {match_sum[i]}",sep='\n')
-min , max = len(match_sum[0]),len(match_sum[0])
+min , max = len(match_sum[0]),len(match_sum[len(match_sum)-1])
 max_index , min_index = 0,0
 for i in range(1,len(match_sum)):
     if len(match_sum[i]) < min:
