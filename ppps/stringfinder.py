@@ -31,8 +31,10 @@ while l1.count(symbol) != len(l1):
         print(c)
         sleep(0.1)
         if (len(l1)-l1.count(symbol))==len(name_list):
+            os.system('cls')
             break
     else:
         break
-print(name)
+print('\n'+name+'\n')
+print(c)
     
