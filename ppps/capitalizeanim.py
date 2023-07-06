@@ -2,7 +2,7 @@ import os
 from time import sleep
 import random
 os.system('cls')
-a_list = [chr(random.randint(97, 122)) for _ in range(156*35)]
+a_list = [chr(random.randint(97, 122)) for _ in range(156)]
 a = "".join(a_list)
 l,c,l3,symbol,l1 = [],'',[],'.',[*a]
 capital_wtd = input("Do u want to see the animation as linear or random: \n1> linear - l\n2> random - r\n-> ")
@@ -29,5 +29,4 @@ elif capital_wtd.lower() == 'l':
         c = ''.join(l1)
         os.system('cls')
         print(c)
-        sleep(0.05)
         i += 1
