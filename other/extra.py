@@ -233,7 +233,6 @@ print("value 1 , color1 = ",value1,color1)
 print("value 2 , color2 = ",value2,color2)
 
 def deck_1(ccards,deck,top_card):
-
     pass
 def deck_m():
     pass
