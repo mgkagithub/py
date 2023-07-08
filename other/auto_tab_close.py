@@ -10,14 +10,13 @@ seconds = int(input("Enter seconds: \n"))
 total_seconds = hours + minutes + seconds
 print(f"\n\nTimer will close the tab in {total_seconds} seconds\n\n")
 sleep(1)
-for i in range(3,-1,-1):
+for i in range(3,0,-1):
     os.system('cls')
     print(f"Timer starts in {i}")
     sleep(1)
 print('Timer started')
-sleep(1)
 os.system('cls')
-for i in range(total_seconds):
+for i in range(1,total_seconds):
     print(i)
     sleep(1)
     os.system('cls')
