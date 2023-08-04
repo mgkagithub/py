@@ -7,7 +7,7 @@ a_list = list(chr(random.randint(97, 122)) for _ in range(156*35))
 a = ''.join(a_list)
 print(a)
 name = input("Enter your string: (25 words)\n-> ")
-l,c,l3,symbol,l1,name_letter_index,i,j,str1,str2,start_index = [],'',[],'.',[*a],[],0,0,name,a,0
+l,c,l3,symbol,l1,name_letter_index,i,j,str1,str2,start_index = [],'',[],'||',[*a],[],0,0,name,a,0
 name_list = [char for char in ''.join(name.split()) if char.isalpha() and char not in string.punctuation and char not in string.digits]
 name_list = [elem.lower() for elem in name_list]
 for char in name_list:

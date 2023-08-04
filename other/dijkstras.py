@@ -1,5 +1,5 @@
 import random as r
-from extra import find_mode , find_anti_mode
+# from extra import find_mode , find_anti_mode
 pcards = []
 cards = [
 
